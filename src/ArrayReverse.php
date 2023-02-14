@@ -6,17 +6,17 @@ namespace App;
 
 class ArrayReverse
 {
-    public function process(array $array): array
+    public function process(array $array = [0, 1, 2, 3, 4, 5, 6]): array
     {
-        end($array);
+        $result = [];
 
-        $newArray = [];
-        while (count($newArray) !== count($array)) {
-            $newArray[key($array)] = current($array);
+        $lastElement = end($array);
+        $result[key($array)] = $lastElement;
 
-            prev($array);
+        while (($prev = prev($array)) !== false) {
+            $result[key($array)] = $prev;
         }
 
-        return $newArray;
+        return $result;
     }
 }
